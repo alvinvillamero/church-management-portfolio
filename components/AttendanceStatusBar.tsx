@@ -37,7 +37,7 @@ export default function AttendanceStatusBar({ className = '' }: AttendanceStatus
       setLoading(true);
       setError('');
       const response = await api.get('/users/me/attendance-status');
-      setStatus(response.data);
+      setStatus(response.data as AttendanceStatus);
     } catch (err: any) {
       console.error('Failed to fetch attendance status:', err);
       setError('Failed to load attendance status');
