@@ -51,6 +51,11 @@ export default function LoginPage() {
       const response = await api.post('/auth/login', formData);
       const { token, refreshToken, user } = response.data;
 
+      if (!token || !refreshToken || !user) {
+        setError('Invalid response from server');
+        return;
+      }
+
       login(token, refreshToken, user);
 
       // Small delay to ensure state is saved
