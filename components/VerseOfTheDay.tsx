@@ -31,7 +31,7 @@ export default function VerseOfTheDay({ className = '', onView }: VerseOfTheDayP
     try {
       setLoading(true);
       setError('');
-      const response = await api.get('/verses/today');
+      const response = await api.get('/verses/today') as { data: { verse?: Verse; isViewed?: boolean } };
       if (response.data.verse) {
         setVerse(response.data.verse);
         setIsViewed(response.data.isViewed || false);
